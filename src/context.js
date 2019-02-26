@@ -7,10 +7,19 @@ class ProductProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: storeProducts,
+      products: [],
       detailProducts: detailProduct
     };
   }
+
+  setProducts = () => {
+    let products = [];
+    storeProducts.forEach(item => {
+      const singleItem = [...item];
+      const products = [...products, singleItem];
+    });
+    this.setState({ products });
+  };
 
   handleDetail = () => {
     console.log("hello from details");
