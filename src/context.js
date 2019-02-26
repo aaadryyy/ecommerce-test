@@ -12,14 +12,14 @@ class ProductProvider extends React.Component {
     };
   }
 
-  setProducts = () => {
-    let products = [];
-    storeProducts.forEach(item => {
-      const singleItem = [...item];
-      const products = [...products, singleItem];
-    });
-    this.setState({ products });
-  };
+  // setProducts = () => {
+  //   let products = [];
+  //   storeProducts.forEach(item => {
+  //     const singleItem = [...item];
+  //     const products = [...products, singleItem];
+  //   });
+  //   this.setState({ products });
+  // };
 
   handleDetail = () => {
     console.log("hello from details");
