@@ -16,7 +16,7 @@ class ProductProvider extends React.Component {
     let tempProducts = [];
     storeProducts.forEach(item => {
       const singleItem = { ...item };
-      const tempProducts = [...tempProducts, singleItem];
+      tempProducts = [...tempProducts, singleItem];
     });
     this.setState(() => {
       return { products: tempProducts };

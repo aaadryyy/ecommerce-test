@@ -1,12 +1,14 @@
-import React, { Fragment } from "react";
-
+import React from "react";
+import { ProductConsumer } from "../context";
+// import { Link } from "react-router-dom";
 class Details extends React.Component {
   render() {
     return (
-      <Fragment>
-        Hello from details
-        <div>lol</div>
-      </Fragment>
+      <ProductConsumer>
+        {value => {
+          console.log(value.detailProduct);
+        }}
+      </ProductConsumer>
     );
   }
 }
