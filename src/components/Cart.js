@@ -5,7 +5,7 @@ class Cart extends React.Component {
   render() {
     return (
       <Fragment>
-        <Title text={"Ceci est le test du titre"} />>
+        <Title text={"Cart"} />>
       </Fragment>
     );
   }

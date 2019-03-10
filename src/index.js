@@ -7,6 +7,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
+  // permet de balancer toutes les infos nécessaires à toute l'app
   <ProductProvider>
     <BrowserRouter>
       <App />

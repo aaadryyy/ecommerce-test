@@ -1,26 +1,31 @@
 import React from "react";
+
 import { storeProducts, detailProduct } from "./data";
 
+// crée l'object Context qui nous fournit
+// Provider => fournit l'information pour toute l'app
+// Consumer => permet d'utiliser ces informations
 const ProductContext = React.createContext();
-
 class ProductProvider extends React.Component {
-  state = {
-    products: [],
-    detailProducts: detailProduct
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+      details: detailProduct
+    };
+  }
 
   componentDidMount = () => {
     this.setProducts();
   };
+
   setProducts = () => {
-    let tempProducts = [];
-    storeProducts.forEach(item => {
-      const singleItem = { ...item };
-      tempProducts = [...tempProducts, singleItem];
+    let products = [];
+    storeProducts.forEach(product => {
+      const singleProduct = { ...product };
+      products = [...products, singleProduct];
     });
-    this.setState(() => {
-      return { products: tempProducts };
-    });
+    this.setState({ products });
   };
 
   handleDetail = () => {
@@ -28,11 +33,14 @@ class ProductProvider extends React.Component {
   };
 
   addToCart = () => {
-    console.log("Hello from add to cart");
+    console.log("hello from add to cart");
   };
-
   render() {
     return (
+      // on veut retourner le Provider (qui fournit donc les infos)
+      // c'est pour ça qu'il doit être placé à la racine de de l'app
+      // le point le plus haut possible
+      // value permet d'utiliser les values de Provider
       <ProductContext.Provider
         value={{
           ...this.state,
@@ -40,6 +48,7 @@ class ProductProvider extends React.Component {
           addToCart: this.addToCart
         }}
       >
+        {/* on retourne tous les children de l'app */}
         {this.props.children}
       </ProductContext.Provider>
     );
@@ -48,4 +57,4 @@ class ProductProvider extends React.Component {
 
 const ProductConsumer = ProductContext.Consumer;
 
-export { ProductProvider, ProductConsumer };
+export { ProductConsumer, ProductProvider };
