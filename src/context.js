@@ -11,7 +11,7 @@ class ProductProvider extends React.Component {
     super(props);
     this.state = {
       products: [],
-      details: detailProduct
+      details: null
     };
   }
 
@@ -28,8 +28,13 @@ class ProductProvider extends React.Component {
     this.setState({ products });
   };
 
-  handleDetail = () => {
+  handleDetail = id => {
     console.log("hello from details");
+    this.state.products.forEach(item => {
+      if (item.id === id) {
+        this.setState({ details: item });
+      }
+    });
   };
 
   addToCart = () => {

@@ -6,7 +6,6 @@ class Details extends React.Component {
     return (
       <ProductConsumer>
         {value => {
-          console.log("--- details", value);
           const { id, company, info, price, title, img } = value.details;
           return (
             <div className="container">
