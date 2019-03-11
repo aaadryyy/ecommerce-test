@@ -1,30 +1,32 @@
 import React, { Fragment } from "react";
-
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { ProductConsumer } from "../context";
 
 class Product extends React.Component {
   render() {
-    const { title, img, price } = this.props.product;
+    const { id, title, img, price } = this.props.product;
     return (
       <Fragment>
-        <div className="container">
-          <div className="row">
-            <h4>Product title</h4>
-            <Link to="/details">Detail</Link>
-          </div>
-          <div onClick={() => console.log("You clicked on the image!")}>
-            <img src={img} alt="" />
-          </div>
-          <div>
-            {title} - {price}€
-          </div>
-          <button onClick={() => console.log("You clicked the button")}>
-            Add to cart
-          </button>
+        <Link to="/details">
+          <ProductConsumer>
+            {value => (
+              <div className="container" onClick={() => value.handleDetail(id)}>
+                <div className="row">
+                  <h4>Product title</h4>
+                </div>
 
-          <hr />
-        </div>
+                <img src={img} alt="" />
+
+                <div>
+                  {title} - {price}€
+                </div>
+
+                <hr />
+              </div>
+            )}
+          </ProductConsumer>
+        </Link>
       </Fragment>
     );
   }
